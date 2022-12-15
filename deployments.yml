@@ -46,11 +46,11 @@ spec:
             value: "junder"
           ports:
             - containerPort: 5432
-    volumes:
-    - name: junderpostgres
-      hostPath:
+    #volumes:
+    #- name: junderpostgres
+      #hostPath:
         # directory location on host
-        path: /home/pi/junderpostgres
+        #path: /home/pi/junderpostgres
         # this field is optional
-        type: Directory
+        #type: Directory
 

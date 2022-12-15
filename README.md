@@ -22,4 +22,6 @@ docker system prune
 docker volume prune
 
 > === PI USEFUL COMMANDS ===
-kubectl apply -f 
+kubectl apply -f https://github.com/Jaynericguy/pirke/blob/main/deployments.yml
+kubectl apply -f https://github.com/Jaynericguy/pirke/blob/main/services.yml
+kubectl apply -f https://github.com/Jaynericguy/pirke/blob/main/ingresses.yml
