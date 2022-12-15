@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paintapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: paintapp
+  template:
+    metadata:
+      labels:
+        app: paintapp
+    spec:
+      containers:
+        - name: paintapp
+          image: jaynericguy/paintapp-django-armv8:latest
+          ports:
+            - containerPort: 8000
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:12.3-alpine
+          env:
+          - name: POSTGRES_HOST_AUTH_METHOD
+            value: "trust"
+          - name: POSTGRES_PASSWORD
+            value: "junder"
+          - name: POSTGRES_USER
+            value: "junder"
+          ports:
+            - containerPort: 5432
+    volumes:
+    - name: junderpostgres
+      hostPath:
+        # directory location on host
+        path: /home/pi/junderpostgres
+        # this field is optional
+        type: Directory
+

@@ -1,0 +1,9 @@
+cluster_name: jundercluster
+ssh_key_path: /home/pi/.ssh/id_rsa
+nodes:
+  - address: 192.168.50.89
+    user: pi
+    role:
+      - controlplane
+      - etcd
+      - worker
