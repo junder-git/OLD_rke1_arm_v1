@@ -22,4 +22,4 @@ docker system prune
 docker volume prune
 
 > === PI USEFUL COMMANDS ===
-
+kubectl apply -f 
