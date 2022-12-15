@@ -7,7 +7,7 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-staging
 spec:
   rules:
-    - host: junder.ddns.net
+    - host: paintapp.junder.ddns.net
       http:
         paths:
           - path: /paintapp
@@ -19,5 +19,5 @@ spec:
                   number: 80
   tls:
     - hosts:
-      - junder.ddns.net
+      - paintapp.junder.ddns.net
       secretName: secret
