@@ -22,6 +22,9 @@ docker system prune
 docker volume prune
 
 > === PI USEFUL COMMANDS ===
+
 kubectl apply -f https://raw.githubusercontent.com/Jaynericguy/pirke/main/deployments.yml
 kubectl apply -f https://raw.githubusercontent.com/Jaynericguy/pirke/main/services.yml
 kubectl apply -f https://raw.githubusercontent.com/Jaynericguy/pirke/main/ingresses.yml
+
+kubectl logs --selector=run=paintapp --tail 1

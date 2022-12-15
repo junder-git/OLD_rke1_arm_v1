@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: paintapp-service
+  namespace: default
 spec:
   selector:
     app: paintapp
@@ -16,6 +17,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: db
+  namespace: default
 spec:
   selector:
     app: postgres
