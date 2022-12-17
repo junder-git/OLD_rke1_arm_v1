@@ -16,6 +16,7 @@ spec:
       containers:
         - name: paintapp
           image: jaynericguy/paintapp-django-armv8:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8000
           resources:
