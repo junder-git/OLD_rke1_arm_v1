@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zlurby
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zlurby
+  template:
+    metadata:
+      labels:
+        app: zlurby
+    spec:
+      containers:
+        - name: zlurby
+          image: jaynericguy/zlurby:latest
+

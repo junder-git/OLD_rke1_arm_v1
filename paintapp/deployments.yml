@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paintapp
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: paintapp
+  template:
+    metadata:
+      labels:
+        app: paintapp
+    spec:
+      containers:
+        - name: paintapp
+          image: jaynericguy/paintapp-django-armv8:latest
+          ports:
+            - containerPort: 8000
+
