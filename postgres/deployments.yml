@@ -25,6 +25,13 @@ spec:
             value: "junder"
           ports:
             - containerPort: 5432
+          resources:
+            limits:
+              cpu: "1"
+              memory: 2000Mi
+            requests:
+              cpu: 500m
+              memory: 2000Mi
     #volumes:
     #- name: junderpostgres
       #hostPath:
