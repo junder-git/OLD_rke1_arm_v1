@@ -1,6 +1,6 @@
 > === PI BACKEND SECTION ===
 
-RKE INSTALL MUST BE ON UBUNTU-22.04 NOT RASPBERRY-OS:::
+RKE INSTALL MUST BE ON UBUNTU-22.10 NOT RASPBERRY-OS:::
 
 INSTALL DOCKER::: 
 
@@ -19,7 +19,6 @@ cp kube_config_cluster.yml .kube/config
 
 INSTALL HELM PLUS CERT MANAGER AND THEN RANCHER BOTH THROUGH HELM::: 
 
-(https://cert-manager.io/docs/installation/helm/)
 curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
 sudo apt-get install apt-transport-https --yes
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
@@ -42,11 +41,14 @@ helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
 helm repo update
 helm install rancher rancher-stable/rancher \
   --namespace cattle-system \
+  --create-namespace \
   --set hostname=rancher.junder.ddns.net \
   --set ingress.tls.source=letsEncrypt \
   --set letsEncrypt.email=james.witts.92@gmail.com \
-  --set letsEncrypt.ingress.class=nginx
+  --set letsEncrypt.ingress.class=nginx \
   --set replicas=1
+
+kubectl -n cattle-system rollout status deploy/rancher
 
 UNINSTALL:::
 
