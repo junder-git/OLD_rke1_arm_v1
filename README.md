@@ -1,29 +1,23 @@
 > === PI BACKEND SECTION ===
 
-RKE INSTALL MUST BE ON UBUNTU-22.10 NOT RASPBERRY-OS:::
+RKE INSTALL HAS BEEN DONE ON Ubuntu 20.10:::
 
 INSTALL DOCKER::: 
 
 > DONT SNAP INSTALL DOCKER (((https://stackoverflow.com/questions/52526219/docker-mkdir-read-only-file-system)))
-sudo groupadd docker
-sudo usermod -aG docker pi
-chmod +x rke_linux-arm64
-"./rke_linux-arm64 up" but prerequisite create a simple cluster.yml with ssh login without pass by running ssh-keygen and ssh-copy-id -i /home/<user>/.ssh/id_rsa -p <port> <user>@<ssh_server>:::
+sudo usermod -aG docker pi (((THEN RESTART PI)))
+chmod +x rke_linux-arm64 (((COPY FILE ACROSS FIRST USING WINSCP WITH SIMPLE CLUSTER.YML TOO)))
+"./rke_linux-arm64 up" but prerequisite with ssh login without pass by running ssh-keygen and ssh-copy-id -i /home/pi/.ssh/id_rsa -p 22 pi@192.168.50.89:::
 
-INSTALL KUBECTL::: 
-
+INSTALL KUBECTL USE SNAP::: 
 sudo snap install kubectl --classic
 mkdir .kube
 cp kube_config_cluster.yml .kube/config
 (now can freely kubectl from sudo apt install kubectl)
 
-INSTALL HELM PLUS CERT MANAGER AND THEN RANCHER BOTH THROUGH HELM::: 
-
-curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
-sudo apt-get install apt-transport-https --yes
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
-sudo apt-get update
-sudo apt-get install helm
+INSTALL HELM PLUS CERT MANAGER AND THEN RANCHER BOTH THROUGH HELM USE SNAP::: 
+(((https://helm.sh/docs/intro/install/)))
+sudo snap install helm --classic
 helm repo add jetstack https://charts.jetstack.io
 helm repo update
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.10.1/cert-manager.crds.yaml
