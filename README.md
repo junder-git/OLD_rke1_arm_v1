@@ -1,6 +1,6 @@
-> === PI BACKEND SECTION ===
+> === PI BACKEND SECTION === 
 
-RKE INSTALL HAS BEEN DONE ON Ubuntu 20.10:::
+RKE INSTALL HAS BEEN DONE ON Raspbian 11:::
 
 INSTALL DOCKER::: 
 
@@ -9,15 +9,12 @@ sudo usermod -aG docker pi (((THEN RESTART PI)))
 chmod +x rke_linux-arm64 (((COPY FILE ACROSS FIRST USING WINSCP WITH SIMPLE CLUSTER.YML TOO)))
 "./rke_linux-arm64 up" but prerequisite with ssh login without pass by running ssh-keygen and ssh-copy-id -i /home/pi/.ssh/id_rsa -p 22 pi@192.168.50.89:::
 
-INSTALL KUBECTL USE SNAP::: 
-sudo snap install kubectl --classic
+INSTALL KUBECTL::: 
 mkdir .kube
 cp kube_config_cluster.yml .kube/config
-(now can freely kubectl from sudo apt install kubectl)
 
 INSTALL HELM PLUS CERT MANAGER AND THEN RANCHER BOTH THROUGH HELM USE SNAP::: 
 (((https://helm.sh/docs/intro/install/)))
-sudo snap install helm --classic
 helm repo add jetstack https://charts.jetstack.io
 helm repo update
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.10.1/cert-manager.crds.yaml
@@ -30,17 +27,17 @@ helm install \
   # --set installCRDs=true 
 
 RANCHER INSTALL:::
-
 helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
 helm repo update
 helm install rancher rancher-stable/rancher \
   --namespace cattle-system \
   --create-namespace \
   --set hostname=rancher.junder.ddns.net \
-  --set ingress.tls.source=letsEncrypt \
-  --set letsEncrypt.email=james.witts.92@gmail.com \
-  --set letsEncrypt.ingress.class=nginx \
   --set replicas=1
+
+  #--set ingress.tls.source=letsEncrypt \
+  #--set letsEncrypt.email=james.witts.92@gmail.com \
+  #--set letsEncrypt.ingress.class=nginx \
 
 kubectl -n cattle-system rollout status deploy/rancher
 
@@ -59,7 +56,7 @@ docker volume prune
 kubectl apply -f paintapp || kubectl delete -f paintapp
 
 kubectl logs deployment/paintapp # logs of deployment
-kubectl logs -f deployment/paintapp # follow logs
+kubectl logs -f deployment/zlurby # follow logs
 
 kubectl rollout restart deployments/paintapp
 
@@ -83,3 +80,7 @@ kubectl get endpoints
 
 (((https://www.suse.com/support/kb/doc/?id=000020174)))
 
+nagios 
+
+kubectl run -i --tty test --image=alpine:3.8 --restart=Never -- sh
+cat /etc/resolv.conf

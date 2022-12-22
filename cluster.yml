@@ -6,7 +6,8 @@ nodes:
       - controlplane
       - etcd
       - worker
-dns:
-  provider: coredns
-  nodelocal:
-    ip_address: "169.254.20.10"
+#dns:
+  #provider: coredns
+  #nodelocal:
+    #ip_address: "169.254.20.10"
+    
