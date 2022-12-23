@@ -26,18 +26,17 @@ helm install \
   --version v1.10.1 \
   # --set installCRDs=true 
 
+helm upgrade cert-manager jetstack/cert-manager \
+  --namespace cert-manager \
+  --set ingressShim.defaultIssuerName=letsencrypt-prod \
+  --set ingressShim.defaultIssuerKind=ClusterIssuer \
+  --set ingressShim.defaultIssuerGroup=cert-manager.io \
+  --version v1.10.1
+
 RANCHER INSTALL:::
 helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
 helm repo update
-helm install rancher rancher-stable/rancher \
-  --namespace cattle-system \
-  --create-namespace \
-  --set hostname=rancher.junder.ddns.net \
-  --set replicas=1
-
-  #--set ingress.tls.source=letsEncrypt \
-  #--set letsEncrypt.email=james.witts.92@gmail.com \
-  #--set letsEncrypt.ingress.class=nginx \
+helm upgrade rancher rancher-stable/rancher --namespace cattle-system --create-namespace --set hostname=rancher.junder.app --set replicas=1 --set ingress.tls.source=letsEncrypt --set letsEncrypt.email=jameswitts92@gmail.com --set letsEncrypt.ingress.class=nginx
 
 kubectl -n cattle-system rollout status deploy/rancher
 
@@ -84,3 +83,15 @@ nagios
 
 kubectl run -i --tty test --image=alpine:3.8 --restart=Never -- sh
 cat /etc/resolv.conf
+
+>=== SOME INGRESS ANOTATIONS ===
+kubernetes.io/ingress.class: haproxy
+cert-manager.io/cluster-issuer: letsencrypt-prod
+ingress.kubernetes.io/whitelist-source-range: "0.0.0.0"
+kubernetes.io/ingress.allow-http: "false"
+ingress.kubernetes.io/ssl-passthrough: "true"
+
+>=== RANCHER CLI ===
+(((https://github.com/rancher/cli/releases)))
+chmod +x rancher
+./rancher login https://rancher.junder.ddns.net --token <BEARER_TOKEN>

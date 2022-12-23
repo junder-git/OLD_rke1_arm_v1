@@ -4,11 +4,11 @@ metadata:
   name: paintapp-ingress
   namespace: default
   annotations:
-    kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: letsencrypt-staging
 spec:
+  ingressClassName: nginx
   rules:
-    - host: app.junder.ddns.net
+    - host: paint.junder.app
       http:
         paths:
           - path: /paintapp
@@ -20,5 +20,5 @@ spec:
                   number: 80
   tls:
     - hosts:
-      - app.junder.ddns.net
-      secretName: secret
+      - paint.junder.app
+      secretName: junderapp
