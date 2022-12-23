@@ -4,7 +4,14 @@ metadata:
   name: paintapp-ingress
   namespace: default
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-staging
+    #kubernetes.io/ingress.class: haproxy
+    #cert-manager.io/cluster-issuer: letsencrypt-staging
+    cert-manager.io/issuer: ca-issuer
+    cert-manager.io/issuer-kind: Issuer
+    ingress.kubernetes.io/whitelist-source-range: "0.0.0.0"
+    kubernetes.io/ingress.allow-http: "false"
+    ingress.kubernetes.io/ssl-passthrough: "true"
+    #kubernetes.io/tls-acme: "true"
 spec:
   ingressClassName: nginx
   rules:
