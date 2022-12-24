@@ -19,7 +19,7 @@ INSTALL HELM PLUS CERT MANAGER AND THEN RANCHER BOTH THROUGH HELM USE SNAP::: \
 (((https://helm.sh/docs/intro/install/))) \
 helm repo add jetstack https://charts.jetstack.io \
 helm repo update \
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.10.1/cert-manager.crds.yaml \
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.10.1/cert-manager.crds.yaml
 
 helm install cert-manager jetstack/cert-manager \ \
   --namespace cert-manager \ \
@@ -59,7 +59,7 @@ kubectl logs -f deployment/zlurby # follow logs \
 kubectl rollout restart deployments/paintapp \
 kubectl exec -it deployment/paintapp -- /bin/sh \
 kubectl get service/nginx-service -o jsonpath='{.spec.clusterIP}' \
-curl clusterip||ingressip \
+curl clusterip || ingressip \
 kubectl describe ing nginx-junder \
 kubectl get ingress \
 kubectl cluster-info \
