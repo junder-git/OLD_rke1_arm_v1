@@ -1,10 +1,8 @@
 ### === PI BACKEND SECTION === 
 
 RKE INSTALL HAS BEEN DONE ON Raspbian 11:::
-
-INSTALL DOCKER::: 
-
-> DONT SNAP INSTALL DOCKER 
+INSTALL DOCKER:::
+> DONT SNAP INSTALL DOCKER
 
 (((https://stackoverflow.com/questions/52526219/docker-mkdir-read-only-file-system)))
 sudo usermod -aG docker pi (((THEN RESTART PI)))
@@ -48,8 +46,6 @@ docker stop $(docker ps -aq)
 docker rm $(docker ps -aq)
 docker system prune
 docker volume prune
-
-
 
 ### === PI USEFUL COMMANDS ===
 
