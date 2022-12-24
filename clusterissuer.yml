@@ -6,7 +6,7 @@ metadata:
 ### START COPY FROM THE HELM INSTALL RANCHER ISSUER IN THE CATTLE NAME SPACE ###
 spec:
   acme:
-    email: jameswitts92@gmail.com
+    email: james.witts.92@gmail.com
     preferredChain: ""
     privateKeySecretRef:
       name: letsencrypt-production
