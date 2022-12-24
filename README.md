@@ -54,27 +54,16 @@ docker volume prune
 ### === PI USEFUL COMMANDS ===
 
 kubectl apply -f paintapp || kubectl delete -f paintapp
-
 kubectl logs deployment/paintapp # logs of deployment
-
 kubectl logs -f deployment/zlurby # follow logs
-
 kubectl rollout restart deployments/paintapp
-
 kubectl exec -it deployment/paintapp -- /bin/sh
-
 kubectl get service/nginx-service -o jsonpath='{.spec.clusterIP}'
-
 curl <clusterip>||<ingressip>
-
 kubectl describe ing nginx-junder
-
 kubectl get ingress
-
 kubectl cluster-info
-
 curl -vLk https://127.0.0.1
-
 kubectl get endpoints
 
 ### === DNS === 
