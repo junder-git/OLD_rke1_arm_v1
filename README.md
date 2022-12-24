@@ -3,7 +3,6 @@
 RKE INSTALL HAS BEEN DONE ON Raspbian 11:::
 INSTALL DOCKER:::
 > DONT SNAP INSTALL DOCKER
-
 (((https://stackoverflow.com/questions/52526219/docker-mkdir-read-only-file-system)))
 sudo usermod -aG docker pi (((THEN RESTART PI)))
 chmod +x rke_linux-arm64 (((COPY FILE ACROSS FIRST USING WINSCP WITH SIMPLE CLUSTER.YML TOO)))
