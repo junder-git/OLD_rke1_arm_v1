@@ -47,7 +47,7 @@ UNINSTALL:::
 docker stop $(docker ps -aq) \
 docker rm $(docker ps -aq) \
 docker system prune \
-docker volume prune \
+docker volume prune
 
 ### === PI USEFUL COMMANDS ===
 
@@ -62,14 +62,14 @@ kubectl describe ing nginx-junder \
 kubectl get ingress \
 kubectl cluster-info \
 curl -vLk https://127.0.0.1 \
-kubectl get endpoints \
+kubectl get endpoints
 
 ### === DNS === 
 
 (((look into nagios))) \
 (((https://www.suse.com/support/kb/doc/?id=000020174))) \
 kubectl run -i --tty test --image=alpine:3.8 --restart=Never -- sh \
-cat /etc/resolv.conf \
+cat /etc/resolv.conf
 
 ### === SOME INGRESS ANOTATIONS ===
 
@@ -77,10 +77,10 @@ kubernetes.io/ingress.class: haproxy \
 cert-manager.io/cluster-issuer: letsencrypt-prod \
 ingress.kubernetes.io/whitelist-source-range: "0.0.0.0" \
 kubernetes.io/ingress.allow-http: "false" \
-ingress.kubernetes.io/ssl-passthrough: "true" \
+ingress.kubernetes.io/ssl-passthrough: "true"
 
 ### === RANCHER CLI ===
 
 (((https://github.com/rancher/cli/releases))) \
 chmod +x rancher \
-./rancher login https://rancher.junder.ddns.net --token <BEARER_TOKEN> \
+./rancher login https://rancher.junder.ddns.net --token <BEARER_TOKEN>
