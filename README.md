@@ -19,14 +19,9 @@ helm repo add jetstack https://charts.jetstack.io
 helm repo update
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.10.1/cert-manager.crds.yaml
 
-helm install \
-  cert-manager jetstack/cert-manager \
+helm install cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
-  --version v1.10.1
-
-helm upgrade cert-manager jetstack/cert-manager \
-  --namespace cert-manager \
   --set ingressShim.defaultIssuerName=letsencrypt-prod \
   --set ingressShim.defaultIssuerKind=ClusterIssuer \
   --set ingressShim.defaultIssuerGroup=cert-manager.io \
