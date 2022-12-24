@@ -51,11 +51,12 @@ docker volume prune
 
 
 
-> === PI USEFUL COMMANDS ===
+### === PI USEFUL COMMANDS ===
 
 kubectl apply -f paintapp || kubectl delete -f paintapp
 
 kubectl logs deployment/paintapp # logs of deployment
+
 kubectl logs -f deployment/zlurby # follow logs
 
 kubectl rollout restart deployments/paintapp
@@ -76,23 +77,23 @@ curl -vLk https://127.0.0.1
 
 kubectl get endpoints
 
->=== DNS === 
+### === DNS === 
 
 (((https://www.suse.com/support/kb/doc/?id=000020174)))
-
 nagios 
-
 kubectl run -i --tty test --image=alpine:3.8 --restart=Never -- sh
 cat /etc/resolv.conf
 
->=== SOME INGRESS ANOTATIONS ===
+### === SOME INGRESS ANOTATIONS ===
+
 kubernetes.io/ingress.class: haproxy
 cert-manager.io/cluster-issuer: letsencrypt-prod
 ingress.kubernetes.io/whitelist-source-range: "0.0.0.0"
 kubernetes.io/ingress.allow-http: "false"
 ingress.kubernetes.io/ssl-passthrough: "true"
 
->=== RANCHER CLI ===
+### === RANCHER CLI ===
+
 (((https://github.com/rancher/cli/releases)))
 chmod +x rancher
 ./rancher login https://rancher.junder.ddns.net --token <BEARER_TOKEN>
