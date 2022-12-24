@@ -7,7 +7,9 @@ INSTALL DOCKER:::
 (((https://stackoverflow.com/questions/52526219/docker-mkdir-read-only-file-system))) \
 sudo usermod -aG docker pi (((THEN RESTART PI))) \
 chmod +x rke_linux-arm64 (((COPY FILE ACROSS FIRST USING WINSCP WITH SIMPLE CLUSTER.YML TOO))) \
-"./rke_linux-arm64 up" but prerequisite with ssh login without pass by running ssh-keygen and ssh-copy-id -i /home/pi/.ssh/id_rsa -p 22 pi@192.168.50.89::: \
+"./rke_linux-arm64 up" but prerequisite with ssh login without pass by running::: \
+ssh-keygen \
+ssh-copy-id -i /home/pi/.ssh/id_rsa -p 22 pi@192.168.50.89:::
 
 INSTALL KUBECTL::: \
 mkdir .kube \
