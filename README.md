@@ -38,7 +38,7 @@ helm install rancher rancher-stable/rancher \
   --set hostname=rancher.junder.app \
   --set replicas=1 \
   --set ingress.tls.source=letsEncrypt \
-  --set letsEncrypt.email=jameswitts92@gmail.com \
+  --set letsEncrypt.email=james.witts.92@gmail.com \
   --set letsEncrypt.ingress.class=nginx
 
 kubectl -n cattle-system rollout status deploy/rancher
