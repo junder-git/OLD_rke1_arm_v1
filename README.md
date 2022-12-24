@@ -59,7 +59,7 @@ kubectl logs -f deployment/zlurby # follow logs \
 kubectl rollout restart deployments/paintapp \
 kubectl exec -it deployment/paintapp -- /bin/sh \
 kubectl get service/nginx-service -o jsonpath='{.spec.clusterIP}' \
-curl <clusterip>||<ingressip> \
+curl clusterip||ingressip \
 kubectl describe ing nginx-junder \
 kubectl get ingress \
 kubectl cluster-info \
