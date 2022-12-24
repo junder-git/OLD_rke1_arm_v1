@@ -23,7 +23,7 @@ helm install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
-  --version v1.10.1 \ 
+  --version v1.10.1 \
 
 helm upgrade cert-manager jetstack/cert-manager \
   --namespace cert-manager \
